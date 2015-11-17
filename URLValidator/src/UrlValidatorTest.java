@@ -113,22 +113,38 @@ public class UrlValidatorTest extends TestCase {
      } 
    }
    
-    // port partition
+    // port partition - Done with the isValidAuthority(String authority) function
    public void testYourThirdPartition(){
      System.out.print("\nTesting Port:\n");
 
-     String[] ourPort = {":80", ":"}
+     String[] ourPort = {"www.google.com:80", "www.google.com:"}
      UrlValidator portVal = new UrlValidator(ourPort, 0);
      for(int i = 0; i < ourPort.length; i++){
         String curPort = ourPort[i];
         System.out.print("\nTesting " + curPort);
-        boolean valid = isValidPort(curPort);
+        boolean valid = isValidAuthority(curPort);
         if(valid == false){
           System.out.print("\nFAILED, invalid port\n");
         }
      } 
    }
    
+    // path Partition
+   public void testYourFourthPartition(){
+     System.out.print("\nTesting Path:\n");
+
+     String[] ourPort = {"/test1", "//test1", "/", "test1"}
+     UrlValidator pathVal = new UrlValidator(ourPat, 0);
+     for(int i = 0; i < ourPath.length; i++){
+        String curPath = ourPath[i];
+        System.out.print("\nTesting " + curPath);
+        boolean valid = isValidPath(curPath);
+        if(valid == false){
+          System.out.print("\nFAILED, invalid path\n");
+        }
+     } 
+   }
+
    public void testIsValid()
    {
 
