@@ -41,24 +41,97 @@ public class UrlValidatorTest extends TestCase {
    public void testManualTest()
    {
 	   UrlValidator urlVal = new UrlValidator(null, null, UrlValidator.ALLOW_ALL_SCHEMES);
-	   System.out.println(urlVal.isValid("http://www.amazon.com"));
-	   
-	   
+	 
+     // Scheme
+     System.out.println(urlVal.isValid("http://www.google.com"));
+     System.out.println(urlVal.isValid("http://www.google.com"));
+	   System.out.println(urlVal.isValid("h3tp://www.google.com"));
+     System.out.println(urlVal.isValid("://www.google.com"));
+     System.out.println(urlVal.isValid("www.google.com"));
+
+     //authority
+     System.out.println(urlVal.isValid("http://www.google.com"));
+     System.out.println(urlVal.isValid("http://www.google~.com"));
+     System.out.println(urlVal.isValid("http://www.google"));
+ 
+
+     //port
+     System.out.println(urlVal.isValid("http://www.google.com:80"));
+     System.out.println(urlVal.isValid("http://www.google.com:"));
+
+     //path
+      System.out.println(urlVal.isValid("http://www.google.com/test1"));
+      System.out.println(urlVal.isValid("http://www.google.com/"));
+      System.out.println(urlVal.isValid("http://www.google.comtest1"));
+      System.out.println(urlVal.isValid("http://www.google.com//test1"));
+
+      //option
+      System.out.println(urlVal.isValid("http://www.google.com/test1/test1"));
+      System.out.println(urlVal.isValid("http://www.google.com/test1/"));
+      System.out.println(urlVal.isValid("http://www.google.com/test1test1"));
+      System.out.println(urlVal.isValid("http://www.google.com/test1//test1"));
+
+      //queries
+      System.out.println(urlVal.isValid("http://www.google.com?action=view"));
+      System.out.println(urlVal.isValid("http://www.google.com?action="));
+      System.out.println(urlVal.isValid("http://www.google.comaction=view"));
+      System.out.println(urlVal.isValid("http://www.google.com??action=view"));
    }
    
    
+   // scheme partition
    public void testYourFirstPartition()
    {
-	   
+	   System.out.print("\nTesting Schemes:\n");
+
+     String[] ourSchemes = {"http://", "h3tp://", "://"}
+     UrlValidator schemeVal = new UrlValidator(ourSchemes, 0);
+     for(int i = 0; i < ourSchemes.length; i++){
+        String curScheme = ourSchemes[i];
+        System.out.print("\nTesting " + curScheme);
+        boolean valid = isValidScheme(curScheme);
+        if(valid == false){
+          System.out.print("\nFAILED, invalid scheme\n");
+        }
+     }
+
    }
    
+   // authority partition
    public void testYourSecondPartition(){
-	   
+	   System.out.print("\nTesting Authority:\n");
+
+     String[] ourAuthority = {"www.google.com", "www.google~.com", "www.google"}
+     UrlValidator authVal = new UrlValidator(ourAuthority, 0);
+     for(int i = 0; i < ourAuthority.length; i++){
+        String curAuth = ourAuth[i];
+        System.out.print("\nTesting " + curAuth);
+        boolean valid = isValidAuthority(curAuth);
+        if(valid == false){
+          System.out.print("\nFAILED, invalid authority\n");
+        }
+     } 
    }
    
+    // port partition
+   public void testYourThirdPartition(){
+     System.out.print("\nTesting Port:\n");
+
+     String[] ourPort = {":80", ":"}
+     UrlValidator portVal = new UrlValidator(ourPort, 0);
+     for(int i = 0; i < ourPort.length; i++){
+        String curPort = ourPort[i];
+        System.out.print("\nTesting " + curPort);
+        boolean valid = isValidPort(curPort);
+        if(valid == false){
+          System.out.print("\nFAILED, invalid port\n");
+        }
+     } 
+   }
    
    public void testIsValid()
    {
+
 	   for(int i = 0;i<10000;i++)
 	   {
 		   
