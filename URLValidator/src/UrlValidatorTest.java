@@ -42,6 +42,7 @@ public class UrlValidatorTest extends TestCase {
    {
 	   UrlValidator urlVal = new UrlValidator(null, null, UrlValidator.ALLOW_ALL_SCHEMES);
 	 
+     System.out.print("\nAllowing all schemes: \n");
      // Scheme
      System.out.println(urlVal.isValid("http://www.google.com"));
      System.out.println(urlVal.isValid("http://www.google.com"));
@@ -76,6 +77,122 @@ public class UrlValidatorTest extends TestCase {
       System.out.println(urlVal.isValid("http://www.google.com?action="));
       System.out.println(urlVal.isValid("http://www.google.comaction=view"));
       System.out.println(urlVal.isValid("http://www.google.com??action=view"));
+
+
+    UrlValidator urlVal = new UrlValidator(null, null, UrlValidator.NO_FRAGMENTS);
+     System.out.print("\nAllowing No Fragments: \n");
+     // Scheme
+     System.out.println(urlVal.isValid("http://www.google.com"));
+     System.out.println(urlVal.isValid("http://www.google.com"));
+     System.out.println(urlVal.isValid("h3tp://www.google.com"));
+     System.out.println(urlVal.isValid("://www.google.com"));
+     System.out.println(urlVal.isValid("www.google.com"));
+
+     //authority
+     System.out.println(urlVal.isValid("http://www.google.com"));
+     System.out.println(urlVal.isValid("http://www.google~.com"));
+     System.out.println(urlVal.isValid("http://www.google"));
+ 
+
+     //port
+     System.out.println(urlVal.isValid("http://www.google.com:80"));
+     System.out.println(urlVal.isValid("http://www.google.com:"));
+
+     //path
+      System.out.println(urlVal.isValid("http://www.google.com/test1"));
+      System.out.println(urlVal.isValid("http://www.google.com/"));
+      System.out.println(urlVal.isValid("http://www.google.comtest1"));
+      System.out.println(urlVal.isValid("http://www.google.com//test1"));
+
+      //option
+      System.out.println(urlVal.isValid("http://www.google.com/test1/test1"));
+      System.out.println(urlVal.isValid("http://www.google.com/test1/"));
+      System.out.println(urlVal.isValid("http://www.google.com/test1test1"));
+      System.out.println(urlVal.isValid("http://www.google.com/test1//test1"));
+
+      //queries
+      System.out.println(urlVal.isValid("http://www.google.com?action=view"));
+      System.out.println(urlVal.isValid("http://www.google.com?action="));
+      System.out.println(urlVal.isValid("http://www.google.comaction=view"));
+      System.out.println(urlVal.isValid("http://www.google.com??action=view"));
+   
+
+    UrlValidator urlVal = new UrlValidator(null, null, UrlValidator.ALLOW_LOCAL_URLS);
+     System.out.print("\nAllowing local urls: \n");
+     // Scheme
+     System.out.println(urlVal.isValid("http://www.google.com"));
+     System.out.println(urlVal.isValid("http://www.google.com"));
+     System.out.println(urlVal.isValid("h3tp://www.google.com"));
+     System.out.println(urlVal.isValid("://www.google.com"));
+     System.out.println(urlVal.isValid("www.google.com"));
+
+     //authority
+     System.out.println(urlVal.isValid("http://www.google.com"));
+     System.out.println(urlVal.isValid("http://www.google~.com"));
+     System.out.println(urlVal.isValid("http://www.google"));
+ 
+
+     //port
+     System.out.println(urlVal.isValid("http://www.google.com:80"));
+     System.out.println(urlVal.isValid("http://www.google.com:"));
+
+     //path
+      System.out.println(urlVal.isValid("http://www.google.com/test1"));
+      System.out.println(urlVal.isValid("http://www.google.com/"));
+      System.out.println(urlVal.isValid("http://www.google.comtest1"));
+      System.out.println(urlVal.isValid("http://www.google.com//test1"));
+
+      //option
+      System.out.println(urlVal.isValid("http://www.google.com/test1/test1"));
+      System.out.println(urlVal.isValid("http://www.google.com/test1/"));
+      System.out.println(urlVal.isValid("http://www.google.com/test1test1"));
+      System.out.println(urlVal.isValid("http://www.google.com/test1//test1"));
+
+      //queries
+      System.out.println(urlVal.isValid("http://www.google.com?action=view"));
+      System.out.println(urlVal.isValid("http://www.google.com?action="));
+      System.out.println(urlVal.isValid("http://www.google.comaction=view"));
+      System.out.println(urlVal.isValid("http://www.google.com??action=view"));
+
+
+     UrlValidator urlVal = new UrlValidator();
+     System.out.print("\nDefault: \n");
+     // Scheme
+     System.out.println(urlVal.isValid("http://www.google.com"));
+     System.out.println(urlVal.isValid("http://www.google.com"));
+     System.out.println(urlVal.isValid("h3tp://www.google.com"));
+     System.out.println(urlVal.isValid("://www.google.com"));
+     System.out.println(urlVal.isValid("www.google.com"));
+
+     //authority
+     System.out.println(urlVal.isValid("http://www.google.com"));
+     System.out.println(urlVal.isValid("http://www.google~.com"));
+     System.out.println(urlVal.isValid("http://www.google"));
+ 
+
+     //port
+     System.out.println(urlVal.isValid("http://www.google.com:80"));
+     System.out.println(urlVal.isValid("http://www.google.com:"));
+
+     //path
+      System.out.println(urlVal.isValid("http://www.google.com/test1"));
+      System.out.println(urlVal.isValid("http://www.google.com/"));
+      System.out.println(urlVal.isValid("http://www.google.comtest1"));
+      System.out.println(urlVal.isValid("http://www.google.com//test1"));
+
+      //option
+      System.out.println(urlVal.isValid("http://www.google.com/test1/test1"));
+      System.out.println(urlVal.isValid("http://www.google.com/test1/"));
+      System.out.println(urlVal.isValid("http://www.google.com/test1test1"));
+      System.out.println(urlVal.isValid("http://www.google.com/test1//test1"));
+
+      //queries
+      System.out.println(urlVal.isValid("http://www.google.com?action=view"));
+      System.out.println(urlVal.isValid("http://www.google.com?action="));
+      System.out.println(urlVal.isValid("http://www.google.comaction=view"));
+      System.out.println(urlVal.isValid("http://www.google.com??action=view"));
+
+
    }
    
    
