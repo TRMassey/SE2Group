@@ -17,7 +17,8 @@
 
 
 import junit.framework.TestCase;
-
+import.java.util.Math;
+import.java.util.Random;
 
 
 
@@ -318,7 +319,7 @@ public class UrlValidatorTest extends TestCase {
    public void testYourFifthPartition(){
      System.out.println("\nTesting Queries:\n");
 
-     String[] ourQueries = {"/test1", "//test1", "/", "test1"}
+     String[] ourQueries = {"?action=view", "?action=", "/", "??action=view"}
      UrlValidator pathQuery = new UrlValidator(ourQueries, 0);
      for(int i = 0; i < ourQueries.length; i++){
         String curQuery = ourQueries[i];
@@ -331,14 +332,59 @@ public class UrlValidatorTest extends TestCase {
    }
 
 
-   public void testIsValid()
-   {
+public void testIsValid()
+{
+    int bugCount = 0;
+    int length = 10;    // change as needed for loop count
+    int k = 0;
 
-	   for(int i = 0;i<10000;i++)
-	   {
-		   
-	   }
+    // set up valid parts
+    String[length] badUrls;
+    String[] trueSchemes = {"http://", ""};
+    String[] trueAuthority = {"www.google.com", "google.com"};
+    String[] truePort = {":80", ":9", ":100"};
+    String[] truePath = {"/test1", "/"};
+    String[] trueOptions = {"/test1", "/test1/test1", " "};
+    String[] trueQueries = {"?action=view", " "};
+
+
+  // randomize valid each round and loop through "length" times
+	for(int i = 0; i < length; i++)
+	{
+
+      // randomize
+      System.out.println("\nTesting Known Valid Part Inputs:\n");
+      int schemeInt = Math.random() * 2;
+      int authorityInt = Math.random() * 2;
+      int portInt = Math.random() * 3;
+      int pathInt = Math.random() * 2;
+      int optionsInt = Math.random() * 3;
+      int queriesInt = Math.random() *2;
+
+      // make string of valid parts in valid order
+      String url = trueSchemes[schemeInt] + trueAuthority[authorityInt] + truePort[portInt] + truePath[pathInt] + trueQueries[queriesInt];
+      valdidator = new UrlValidator();
+     
+     // check if it was marked valid
+      boolean valid = validator.isValid(url);
+
+      // if not valid, increase bug count and store url
+      if(valid == false){
+        bugCount++;
+        badUrls[k] = url;
+        k++;
+      }
+
+      // print results
+      System.out.println("\nNumber of Bugs: " + bugCount + "\n");
+      System.out.println("\nBad URLs: \n");
+      for(int i = 0; i < badUrls.length; i++){
+        System.out.println(badUrls[i] + "\n");
+      }
+
    }
+
+}
    
    public void testAnyOtherUnitTest()
    {
