@@ -258,7 +258,7 @@ public class UrlValidatorTest extends TestCase {
         String curScheme = ourSchemes[i];
         System.out.println("\nTesting " + curScheme);
         boolean valid = isValidScheme(curScheme);
-        if(valid == false){
+        if(valid == false && i == 0 || valid == true && i == 1 || valid == true && i == 2){
           System.out.println("\nFAILED, invalid scheme\n");
         }
      }
@@ -275,7 +275,7 @@ public class UrlValidatorTest extends TestCase {
         String curAuth = ourAuth[i];
         System.out.println("\nTesting " + curAuth);
         boolean valid = isValidAuthority(curAuth);
-        if(valid == false){
+        if(valid == false && i == 0 || valid == true && i == 1 || valid == true && i == 2){
           System.out.println("\nFAILED, invalid authority\n");
         }
      } 
@@ -291,7 +291,7 @@ public class UrlValidatorTest extends TestCase {
         String curPort = ourPort[i];
         System.out.println("\nTesting " + curPort);
         boolean valid = isValidAuthority(curPort);
-        if(valid == false){
+        if(valid == false && i == 0 || valid == true && i == 1){
           System.out.println("\nFAILED, invalid port\n");
         }
      } 
@@ -307,7 +307,7 @@ public class UrlValidatorTest extends TestCase {
         String curPath = ourPath[i];
         System.out.println("\nTesting " + curPath);
         boolean valid = isValidPath(curPath);
-        if(valid == false){
+        if(valid == false && i == 0 || valid == true && i == 1 || valid == true && i == 2){
           System.out.println("\nFAILED, invalid path\n");
         }
      } 
@@ -324,7 +324,7 @@ public class UrlValidatorTest extends TestCase {
         String curQuery = ourQueries[i];
         System.out.println("\nTesting " + curQueryPath);
         boolean valid = isValidQuery(curQuery);
-        if(valid == false){
+      if(valid == false && i == 0 || valid == true && i == 1 || valid == false && i == 2 || valid == true && i == 3){
           System.out.println("\nFAILED, invalid Query\n");
         }
      } 
