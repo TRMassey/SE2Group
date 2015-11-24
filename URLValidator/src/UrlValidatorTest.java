@@ -56,6 +56,7 @@ public class UrlValidatorTest extends TestCase {
      System.out.println(urlVal.isValid("://www.google.com"));
 
 
+
      //authority
      System.out.println("\nShould Validate:");
      System.out.println("http://www.google.com");
@@ -67,8 +68,8 @@ public class UrlValidatorTest extends TestCase {
      System.out.println(urlVal.isValid("http://www.google~.com"));
      System.out.println("http://www.google");
      System.out.println(urlVal.isValid("http://www.google"));
-     System.out.println("http://notreal.test.com");
-     System.out.println(urlVal.isValid("http://notreal.test.com"));
+     System.out.println("http://broke.hostname.com");
+     System.out.println(urlVal.isValid("http://broke.hostname.com"));
      System.out.println("http://1.2.3");
      System.out.println(urlVal.isValid("http://1.2.3"));
      System.out.println("http://<blank>");
@@ -150,6 +151,7 @@ public class UrlValidatorTest extends TestCase {
      System.out.println(urlVal.isValid("://www.google.com"));
 
 
+
      //authority
      System.out.println("\nShould Validate:");
      System.out.println("http://www.google.com");
@@ -161,8 +163,8 @@ public class UrlValidatorTest extends TestCase {
      System.out.println(urlVal.isValid("http://www.google~.com"));
      System.out.println("http://www.google");
      System.out.println(urlVal.isValid("http://www.google"));
-     System.out.println("http://notreal.test.com");
-     System.out.println(urlVal.isValid("http://notreal.test.com"));
+     System.out.println("http://broke.hostname.com");
+     System.out.println(urlVal.isValid("http://broke.hostname.com"));
      System.out.println("http://1.2.3");
      System.out.println(urlVal.isValid("http://1.2.3"));
      System.out.println("http://<blank>");
@@ -226,7 +228,7 @@ public class UrlValidatorTest extends TestCase {
       System.out.println("http://www.google.com??action=view");
       System.out.println(urlVal.isValid("http://www.google.com??action=view"));
 
-
+      UrlValidator urlVal3 = new UrlValidator(UrlValidator.ALLOW_LOCAL_URLS);
       System.out.println("\nAllowing local urls: \n");
       // Scheme
       System.out.println("\nShould Validate:");
@@ -249,13 +251,16 @@ public class UrlValidatorTest extends TestCase {
       System.out.println(urlVal.isValid("http://www.google.com"));
       System.out.println("http://www.google.au");
       System.out.println(urlVal.isValid("http://www.google.au"));
+      // special, SHOULD allow at allow local
+      System.out.println("http://hostname");
+      System.out.println(urlVal.isValid("http://hostname"));
       System.out.println("\nShould Not Validate:");
       System.out.println("http://www.google~.com");
       System.out.println(urlVal.isValid("http://www.google~.com"));
       System.out.println("http://www.google");
       System.out.println(urlVal.isValid("http://www.google"));
-      System.out.println("http://notreal.test.com");
-      System.out.println(urlVal.isValid("http://notreal.test.com"));
+      System.out.println("http://broke.hostname.com");
+      System.out.println(urlVal.isValid("http://broke.hostname.com"));
       System.out.println("http://1.2.3");
       System.out.println(urlVal.isValid("http://1.2.3"));
       System.out.println("http://<blank>");
@@ -320,7 +325,7 @@ public class UrlValidatorTest extends TestCase {
        System.out.println(urlVal.isValid("http://www.google.com??action=view"));
 
    
-       UrlValidator urlVal4 = new UrlValidator();
+       UrlValidator urlVal4 = new UrlValidator(0);
      System.out.println("\nDefault: \n");
      // Scheme
      System.out.println("\nShould Validate:");
@@ -348,12 +353,15 @@ public class UrlValidatorTest extends TestCase {
      System.out.println(urlVal.isValid("http://www.google~.com"));
      System.out.println("http://www.google");
      System.out.println(urlVal.isValid("http://www.google"));
-     System.out.println("http://notreal.test.com");
-     System.out.println(urlVal.isValid("http://notreal.test.com"));
+     System.out.println("http://broke.hostname.com");
+     System.out.println(urlVal.isValid("http://broke.hostname.com"));
      System.out.println("http://1.2.3");
      System.out.println(urlVal.isValid("http://1.2.3"));
      System.out.println("http://<blank>");
      System.out.println(urlVal.isValid("http:// "));
+     // special, should NOT allow at default
+     System.out.println("http://hostname");
+     System.out.println(urlVal.isValid("http://hostname"));
  
 
      //port
