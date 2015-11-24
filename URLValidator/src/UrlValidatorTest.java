@@ -459,7 +459,7 @@ public class UrlValidatorTest extends TestCase {
       String curPath = ourPath[i];
       System.out.println("\nTesting " + curPath);
       boolean valid = pathVal.isValidPath(curPath);
-      if (valid == false && i == 0 || valid == true && i == 1 || valid == true && i == 2 || valid == true && i == 3) {
+      if (valid == false && i == 0 || valid == true && i == 1 || valid == false && i == 2 || valid == true && i == 3) {
         System.out.println("\nFAILED, invalid path\n");
       }
     }
