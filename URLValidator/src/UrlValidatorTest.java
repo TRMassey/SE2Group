@@ -436,7 +436,9 @@ public class UrlValidatorTest extends TestCase {
       System.out.println("\nTesting " + curScheme);
       boolean valid = schemeVal.isValidScheme(curScheme);
       if (valid == false && i == 0 || valid == false && i == 1 || valid == true && i == 2 || valid == true && i == 3 || valid == false && i == 4) {
-        System.out.println("\nFAILED, invalid scheme\n");
+        System.out.println("FAILED, invalid scheme\n");
+      } else {
+    	System.out.println("PASSED\n");
       }
     }
   }
@@ -452,7 +454,9 @@ public class UrlValidatorTest extends TestCase {
       System.out.println("\nTesting " + curAuth);
       boolean valid = authVal.isValidAuthority(curAuth);
       if (valid == false && i == 0 || valid == true && i == 1 || valid == true && i == 2 || valid == true && i == 3 || valid == true && i == 4) {
-        System.out.println("\nFAILED, invalid authority\n");
+        System.out.println("FAILED, invalid authority\n");
+      } else {
+    	System.out.println("PASSED\n");
       }
     }
   }
@@ -468,7 +472,9 @@ public class UrlValidatorTest extends TestCase {
       System.out.println("\nTesting " + curPort);
       boolean valid = portVal.isValidAuthority(curPort);
       if (valid == false && i == 0 || valid == true && i == 1 || valid == true && i == 2 || valid == true && i == 3) {
-       System.out.println("\nFAILED, invalid port\n");
+       System.out.println("FAILED, invalid port\n");
+      } else {
+    	System.out.println("PASSED\n");
       }
     }
   }
@@ -484,7 +490,9 @@ public class UrlValidatorTest extends TestCase {
       System.out.println("\nTesting " + curPath);
       boolean valid = pathVal.isValidPath(curPath);
       if (valid == false && i == 0 || valid == true && i == 1 || valid == false && i == 2 || valid == true && i == 3) {
-        System.out.println("\nFAILED, invalid path\n");
+        System.out.println("FAILED, invalid path\n");
+      } else {
+    	System.out.println("PASSED\n");
       }
     }
   }
@@ -498,10 +506,12 @@ public class UrlValidatorTest extends TestCase {
     UrlValidator pathQuery = new UrlValidator(ourQueries, 0);
     for (int i = 0; i < ourQueries.length; i++) {
       String curQuery = ourQueries[i];
-      System.out.println("\nTesting " + ourQueries);
+      System.out.println("\nTesting " + curQuery);
       boolean valid = pathQuery.isValidQuery(curQuery);
       if(valid == false && i == 0 || valid == true && i == 1 || valid == false && i == 2 || valid == true && i == 3) {
-        System.out.println("\nFAILED, invalid Query\n");
+        System.out.println("FAILED, invalid Query\n");
+      } else {
+    	System.out.println("PASSED\n");
       }
     }
   }
@@ -523,9 +533,9 @@ public class UrlValidatorTest extends TestCase {
 
 
     // randomize valid each round and loop through "length" times
+    System.out.println("\nTesting Known Valid Part Inputs:\n");
     for(int i = 0; i < length; i++) {
       // randomize
-      System.out.println("\nTesting Known Valid Part Inputs:\n");
       int schemeInt = (int) (Math.random() * 2);
       int authorityInt = (int) (Math.random() * 2);
       int portInt = (int) (Math.random() * 3);
@@ -546,19 +556,27 @@ public class UrlValidatorTest extends TestCase {
         badUrls[k] = url;
         k++;
       }
-
-      // print results
-      System.out.println("\nNumber of Bugs: " + bugCount + "\n");
-      System.out.println("\nBad URLs: \n");
-      for (int j = 0; j < badUrls.length; j++) {
-        System.out.println(badUrls[j] + "\n");
-      }
     }
+    // print results
+    System.out.println("\nNumber of Bugs: " + bugCount + "\n");
+    System.out.println("\nBad URLs: \n");
+    for (int j = 0; j < badUrls.length; j++) {
+      if(badUrls[j] != null){
+    	System.out.println(badUrls[j] + "\n");
+      }
+    } 
   }
 
   public void testAnyOtherUnitTest()
   {
-
+	  UrlValidator val = new UrlValidator();
+	  System.out.println("\nUnit Test of isValidQuery\n");
+	  System.out.println("\nTesting query ?action=view");
+	  System.out.println("Result: " + val.isValidScheme("?action=view"));
+	  System.out.println("\nTesting query null");
+	  System.out.println("Result: " + val.isValidScheme(""));
+	  System.out.println("\nTesting query ?page=1&test=0");
+	  System.out.println("Result: " + val.isValidScheme("?page=1&test=0"));
   }
 
   /**
