@@ -405,13 +405,13 @@ public class UrlValidatorTest extends TestCase {
   public void testYourFirstPartition() {
     System.out.println("\nTesting Schemes:\n");
 
-    String[] ourSchemes = {"http://", "h3tp://", "://", ":/"};
+    String[] ourSchemes = {"http://", "h3tp://", "://", ":/", " "};
     UrlValidator schemeVal = new UrlValidator(ourSchemes, 0);
     for (int i = 0; i < ourSchemes.length; i++) {
       String curScheme = ourSchemes[i];
       System.out.println("\nTesting " + curScheme);
       boolean valid = schemeVal.isValidScheme(curScheme);
-      if (valid == false && i == 0 || valid == false && i == 1 || valid == true && i == 2 || valid == true && i == 3) {
+      if (valid == false && i == 0 || valid == false && i == 1 || valid == true && i == 2 || valid == true && i == 3 || valid == false && i == 4) {
         System.out.println("\nFAILED, invalid scheme\n");
       }
     }
