@@ -421,7 +421,7 @@ public class UrlValidatorTest extends TestCase {
   public void testYourSecondPartition() {
     System.out.println("\nTesting Authority:\n");
 
-    String[] ourAuthority = {"www.google.com", "www.google~.com", "www.google", " ", "notreal.test.com"};
+    String[] ourAuthority = {"www.google.com", "www.google~.com", "www.google", " ", "broke.hostname.com"};
     UrlValidator authVal = new UrlValidator(ourAuthority, 0);
     for (int i = 0; i < ourAuthority.length; i++) {
       String curAuth = ourAuthority[i];
