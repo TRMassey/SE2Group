@@ -66,6 +66,7 @@ public class UrlValidatorTest extends TestCase {
     System.out.println(urlVal.isValid("http://1.2.3"));
     System.out.println("http://<blank>");
     System.out.println(urlVal.isValid("http:// "));
+    
 
     // port
     System.out.println("\nShould Validate:");
@@ -100,6 +101,9 @@ public class UrlValidatorTest extends TestCase {
     System.out.println(urlVal.isValid("http://www.google.com/.."));
     System.out.println("http://www.google.com/../");
     System.out.println(urlVal.isValid("http://www.google.com/../"));
+    System.out.println("http://www.google.com       /");
+    System.out.println(urlVal.isValid("http://www.google.com         /"));
+    
 
     // option
     System.out.println("\nShould Validate: ");
@@ -572,11 +576,22 @@ public class UrlValidatorTest extends TestCase {
 	  UrlValidator val = new UrlValidator();
 	  System.out.println("\nUnit Test of isValidQuery\n");
 	  System.out.println("\nTesting query ?action=view");
-	  System.out.println("Result: " + val.isValidScheme("?action=view"));
+	  System.out.println("Result: " + val.isValidQuery("?action=view"));
 	  System.out.println("\nTesting query null");
-	  System.out.println("Result: " + val.isValidScheme(""));
+	  System.out.println("Result: " + val.isValidQuery(""));
 	  System.out.println("\nTesting query ?page=1&test=0");
-	  System.out.println("Result: " + val.isValidScheme("?page=1&test=0"));
+	  System.out.println("Result: " + val.isValidQuery("?page=1&test=0"));
+	  
+	  System.out.println("\nUnit Test of isValidScheme\n");
+	  System.out.println("\nTesting scheme http");
+	  System.out.println("Result: " + val.isValidScheme("http"));
+	  System.out.println("\nTesting scheme https");
+	  System.out.println("Result: " + val.isValidScheme("https"));
+	  System.out.println("\nTesting scheme aaa");
+	  System.out.println("Result: " + val.isValidScheme("aaa"));
+	  System.out.println("\nTesting scheme ftp");
+	  System.out.println("Result: " + val.isValidScheme("ftp"));
+	  
   }
 
   /**
