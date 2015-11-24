@@ -1,4 +1,5 @@
-/* Licensed to the Apache Software Foundation (ASF) under one or more
+/*
+ * Licensed to the Apache Software Foundation (ASF) under one or more
  * contributor license agreements.  See the NOTICE file distributed with
  * this work for additional information regarding copyright ownership.
  * The ASF licenses this file to You under the Apache License, Version 2.0
@@ -91,9 +92,11 @@ public class UrlValidatorTest extends TestCase {
       System.out.println(urlVal.isValid("http://www.google.com/test1/test1"));
       System.out.println("http://www.google.com/test1/");
       System.out.println(urlVal.isValid("http://www.google.com/test1/"));
+      System.out.println("http://www.google.com/test1test1");
+      System.out.println(urlVal.isValid("http://www.google.com/test1test1"));
       System.out.println("\nShould Not Validate: ");
       System.out.println("http://www.google.comtest1test1");
-      System.out.println(urlVal.isValid("http://www.google.com/test1test1"));
+      System.out.println(urlVal.isValid("http://www.google.comtest1test1"));
       System.out.println("http://www.google.com/test1//test1");
       System.out.println(urlVal.isValid("http://www.google.com/test1//test1"));
 
@@ -162,9 +165,11 @@ public class UrlValidatorTest extends TestCase {
       System.out.println(urlVal.isValid("http://www.google.com/test1/test1"));
       System.out.println("http://www.google.com/test1/");
       System.out.println(urlVal.isValid("http://www.google.com/test1/"));
+      System.out.println("http://www.google.com/test1test1");
+      System.out.println(urlVal.isValid("http://www.google.com/test1test1"));
       System.out.println("\nShould Not Validate: ");
       System.out.println("http://www.google.comtest1test1");
-      System.out.println(urlVal.isValid("http://www.google.com/test1test1"));
+      System.out.println(urlVal.isValid("http://www.google.comtest1test1"));
       System.out.println("http://www.google.com/test1//test1");
       System.out.println(urlVal.isValid("http://www.google.com/test1//test1"));
 
@@ -179,7 +184,7 @@ public class UrlValidatorTest extends TestCase {
       System.out.println(urlVal.isValid("http://www.google.comaction=view"));
       System.out.println("http://www.google.com??action=view");
       System.out.println(urlVal.isValid("http://www.google.com??action=view"));
-    
+
       
       UrlValidator urlVal3 = new UrlValidator(null, null, UrlValidator.ALLOW_LOCAL_URLS);
      System.out.println("\nAllowing local urls: \n");
@@ -233,9 +238,11 @@ public class UrlValidatorTest extends TestCase {
       System.out.println(urlVal.isValid("http://www.google.com/test1/test1"));
       System.out.println("http://www.google.com/test1/");
       System.out.println(urlVal.isValid("http://www.google.com/test1/"));
+      System.out.println("http://www.google.com/test1test1");
+      System.out.println(urlVal.isValid("http://www.google.com/test1test1"));
       System.out.println("\nShould Not Validate: ");
       System.out.println("http://www.google.comtest1test1");
-      System.out.println(urlVal.isValid("http://www.google.com/test1test1"));
+      System.out.println(urlVal.isValid("http://www.google.comtest1test1"));
       System.out.println("http://www.google.com/test1//test1");
       System.out.println(urlVal.isValid("http://www.google.com/test1//test1"));
 
@@ -250,6 +257,7 @@ public class UrlValidatorTest extends TestCase {
       System.out.println(urlVal.isValid("http://www.google.comaction=view"));
       System.out.println("http://www.google.com??action=view");
       System.out.println(urlVal.isValid("http://www.google.com??action=view"));
+
     
 
      UrlValidator urlVal4 = new UrlValidator();
@@ -304,9 +312,11 @@ public class UrlValidatorTest extends TestCase {
       System.out.println(urlVal.isValid("http://www.google.com/test1/test1"));
       System.out.println("http://www.google.com/test1/");
       System.out.println(urlVal.isValid("http://www.google.com/test1/"));
+      System.out.println("http://www.google.com/test1test1");
+      System.out.println(urlVal.isValid("http://www.google.com/test1test1"));
       System.out.println("\nShould Not Validate: ");
       System.out.println("http://www.google.comtest1test1");
-      System.out.println(urlVal.isValid("http://www.google.com/test1test1"));
+      System.out.println(urlVal.isValid("http://www.google.comtest1test1"));
       System.out.println("http://www.google.com/test1//test1");
       System.out.println(urlVal.isValid("http://www.google.com/test1//test1"));
 
@@ -321,6 +331,7 @@ public class UrlValidatorTest extends TestCase {
       System.out.println(urlVal.isValid("http://www.google.comaction=view"));
       System.out.println("http://www.google.com??action=view");
       System.out.println(urlVal.isValid("http://www.google.com??action=view"));
+
    }
    
    
