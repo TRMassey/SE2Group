@@ -1,5 +1,4 @@
-/*
- * Licensed to the Apache Software Foundation (ASF) under one or more
+/* Licensed to the Apache Software Foundation (ASF) under one or more
  * contributor license agreements.  See the NOTICE file distributed with
  * this work for additional information regarding copyright ownership.
  * The ASF licenses this file to You under the Apache License, Version 2.0
@@ -39,217 +38,296 @@ public class UrlValidatorTest extends TestCase {
    
    public void testManualTest()
    {
-	   UrlValidator urlVal = new UrlValidator(null, null, UrlValidator.ALLOW_ALL_SCHEMES);
-	 
+     UrlValidator urlVal = new UrlValidator(null, null, UrlValidator.ALLOW_ALL_SCHEMES);
+   
      System.out.println("\nAllowing all schemes: \n");
      // Scheme
-     System.out.println("\nShould Validate: \n");
+     System.out.println("\nShould Validate:");
+     System.out.println("http://www.google.com");
      System.out.println(urlVal.isValid("http://www.google.com"));
-     System.out.println(urlVal.isValid("http://www.google.com"));
+     System.out.println("www.google.com");
      System.out.println(urlVal.isValid("www.google.com"));
-     System.out.println("\nShould Not Validate: \n");
-	   System.out.println(urlVal.isValid("h3tp://www.google.com"));
+     System.out.println("\nShould Not Validate:");
+     System.out.println("h3tp://www.google.com");
+   System.out.println(urlVal.isValid("h3tp://www.google.com"));
+   System.out.println("://www.google.com");
      System.out.println(urlVal.isValid("://www.google.com"));
 
 
      //authority
-     System.out.println("\nShould Validate: \n");
+     System.out.println("\nShould Validate:");
+     System.out.println("http://www.google.com");
      System.out.println(urlVal.isValid("http://www.google.com"));
-     System.out.println("\nShould Not Validate: \n");
+     System.out.println("\nShould Not Validate:");
+     System.out.println("http://www.google~.com");
      System.out.println(urlVal.isValid("http://www.google~.com"));
+     System.out.println("http://www.google");
      System.out.println(urlVal.isValid("http://www.google"));
  
 
      //port
-     System.out.println("\nShould Validate: \n");
+     System.out.println("\nShould Validate:");
+     System.out.println("http://www.google.com:80");
      System.out.println(urlVal.isValid("http://www.google.com:80"));
-     System.out.println("\nShould Not Validate: \n");
+     System.out.println("\nShould Not Validate:");
+     System.out.println("http://www.google.com:");
      System.out.println(urlVal.isValid("http://www.google.com:"));
 
      //path
-      System.out.println("\nShould Validate: \n");
+      System.out.println("\nShould Validate: ");
+      System.out.println("http://www.google.com/test1");
       System.out.println(urlVal.isValid("http://www.google.com/test1"));
+      System.out.println("http://www.google.com/");
       System.out.println(urlVal.isValid("http://www.google.com/"));
-      System.out.println("\nShould Not Validate: \n");
+      System.out.println("\nShould Not Validate: ");
+      System.out.println("http://www.google.comtest1");
       System.out.println(urlVal.isValid("http://www.google.comtest1"));
+      System.out.println("http://www.google.com//test1");
       System.out.println(urlVal.isValid("http://www.google.com//test1"));
 
       //option
-      System.out.println("\nShould Validate: \n");
+      System.out.println("\nShould Validate: ");
+      System.out.println("http://www.google.com/test1/test1");
       System.out.println(urlVal.isValid("http://www.google.com/test1/test1"));
+      System.out.println("http://www.google.com/test1/");
       System.out.println(urlVal.isValid("http://www.google.com/test1/"));
-      System.out.println("\nShould Not Validate: \n");
+      System.out.println("\nShould Not Validate: ");
+      System.out.println("http://www.google.comtest1test1");
       System.out.println(urlVal.isValid("http://www.google.com/test1test1"));
+      System.out.println("http://www.google.com/test1//test1");
       System.out.println(urlVal.isValid("http://www.google.com/test1//test1"));
 
       //queries
-      System.out.println("\nShould Validate: \n");
+      System.out.println("\nShould Validate:");
+      System.out.println("http://www.google.com?action=view");
       System.out.println(urlVal.isValid("http://www.google.com?action=view"));
-      System.out.println("\nShould Not Validate: \n");
+      System.out.println("\nShould Not Validate: ");
+      System.out.println("http://www.google.com?action");
       System.out.println(urlVal.isValid("http://www.google.com?action="));
+      System.out.println("http://www.google.com=view");
       System.out.println(urlVal.isValid("http://www.google.comaction=view"));
+      System.out.println("http://www.google.com??action=view");
       System.out.println(urlVal.isValid("http://www.google.com??action=view"));
 
 
      UrlValidator urlVal2 = new UrlValidator(null, null, UrlValidator.NO_FRAGMENTS);
      System.out.println("\nAllowing No Fragments: \n");
-          // Scheme
-     System.out.println("\nShould Validate: \n");
-     System.out.println(urlVal2.isValid("http://www.google.com"));
-     System.out.println(urlVal2.isValid("http://www.google.com"));
-     System.out.println(urlVal2.isValid("www.google.com"));
-     System.out.println("\nShould Not Validate: \n");
-     System.out.println(urlVal2.isValid("h3tp://www.google.com"));
-     System.out.println(urlVal2.isValid("://www.google.com"));
+     // Scheme
+     System.out.println("\nShould Validate:");
+     System.out.println("http://www.google.com");
+     System.out.println(urlVal.isValid("http://www.google.com"));
+     System.out.println("www.google.com");
+     System.out.println(urlVal.isValid("www.google.com"));
+     System.out.println("\nShould Not Validate:");
+     System.out.println("h3tp://www.google.com");
+   System.out.println(urlVal.isValid("h3tp://www.google.com"));
+   System.out.println("://www.google.com");
+     System.out.println(urlVal.isValid("://www.google.com"));
 
 
      //authority
-     System.out.println("\nShould Validate: \n");
-     System.out.println(urlVal2.isValid("http://www.google.com"));
-     System.out.println("\nShould Not Validate: \n");
-     System.out.println(urlVal2.isValid("http://www.google~.com"));
-     System.out.println(urlVal2.isValid("http://www.google"));
+     System.out.println("\nShould Validate:");
+     System.out.println("http://www.google.com");
+     System.out.println(urlVal.isValid("http://www.google.com"));
+     System.out.println("\nShould Not Validate:");
+     System.out.println("http://www.google~.com");
+     System.out.println(urlVal.isValid("http://www.google~.com"));
+     System.out.println("http://www.google");
+     System.out.println(urlVal.isValid("http://www.google"));
  
 
      //port
-     System.out.println("\nShould Validate: \n");
-     System.out.println(urlVal2.isValid("http://www.google.com:80"));
-     System.out.println("\nShould Not Validate: \n");
-     System.out.println(urlVal2.isValid("http://www.google.com:"));
+     System.out.println("\nShould Validate:");
+     System.out.println("http://www.google.com:80");
+     System.out.println(urlVal.isValid("http://www.google.com:80"));
+     System.out.println("\nShould Not Validate:");
+     System.out.println("http://www.google.com:");
+     System.out.println(urlVal.isValid("http://www.google.com:"));
 
      //path
-      System.out.println("\nShould Validate: \n");
-      System.out.println(urlVal2.isValid("http://www.google.com/test1"));
-      System.out.println(urlVal2.isValid("http://www.google.com/"));
-      System.out.println("\nShould Not Validate: \n");
-      System.out.println(urlVal2.isValid("http://www.google.comtest1"));
-      System.out.println(urlVal2.isValid("http://www.google.com//test1"));
-
-      //option
-      System.out.println("\nShould Validate: \n");
-      System.out.println(urlVal2.isValid("http://www.google.com/test1/test1"));
-      System.out.println(urlVal2.isValid("http://www.google.com/test1/"));
-      System.out.println("\nShould Not Validate: \n");
-      System.out.println(urlVal2.isValid("http://www.google.com/test1test1"));
-      System.out.println(urlVal2.isValid("http://www.google.com/test1//test1"));
-
-      //queries
-      System.out.println("\nShould Validate: \n");
-      System.out.println(urlVal2.isValid("http://www.google.com?action=view"));
-      System.out.println("\nShould Not Validate: \n");
-      System.out.println(urlVal2.isValid("http://www.google.com?action="));
-      System.out.println(urlVal2.isValid("http://www.google.comaction=view"));
-      System.out.println(urlVal2.isValid("http://www.google.com??action=view"));
-
-    UrlValidator urlVal3 = new UrlValidator(null, null, UrlValidator.ALLOW_LOCAL_URLS);
-     System.out.println("\nAllowing local urls: \n");
-          // Scheme
-     System.out.println("\nShould Validate: \n");
-     System.out.println(urlVal3.isValid("http://www.google.com"));
-     System.out.println(urlVal3.isValid("http://www.google.com"));
-     System.out.println(urlVal3.isValid("www.google.com"));
-     System.out.println("\nShould Not Validate: \n");
-     System.out.println(urlVal3.isValid("h3tp://www.google.com"));
-     System.out.println(urlVal3.isValid("://www.google.com"));
-
-
-     //authority
-     System.out.println("\nShould Validate: \n");
-     System.out.println(urlVal3.isValid("http://www.google.com"));
-     System.out.println("\nShould Not Validate: \n");
-     System.out.println(urlVal3.isValid("http://www.google~.com"));
-     System.out.println(urlVal3.isValid("http://www.google"));
- 
-
-     //port
-     System.out.println("\nShould Validate: \n");
-     System.out.println(urlVal3.isValid("http://www.google.com:80"));
-     System.out.println("\nShould Not Validate: \n");
-     System.out.println(urlVal3.isValid("http://www.google.com:"));
-
-     //path
-      System.out.println("\nShould Validate: \n");
-      System.out.println(urlVal3.isValid("http://www.google.com/test1"));
-      System.out.println(urlVal3.isValid("http://www.google.com/"));
-      System.out.println("\nShould Not Validate: \n");
-      System.out.println(urlVal3.isValid("http://www.google.comtest1"));
+      System.out.println("\nShould Validate: ");
+      System.out.println("http://www.google.com/test1");
+      System.out.println(urlVal.isValid("http://www.google.com/test1"));
+      System.out.println("http://www.google.com/");
+      System.out.println(urlVal.isValid("http://www.google.com/"));
+      System.out.println("\nShould Not Validate: ");
+      System.out.println("http://www.google.comtest1");
+      System.out.println(urlVal.isValid("http://www.google.comtest1"));
+      System.out.println("http://www.google.com//test1");
       System.out.println(urlVal.isValid("http://www.google.com//test1"));
 
       //option
-      System.out.println("\nShould Validate: \n");
-      System.out.println(urlVal3.isValid("http://www.google.com/test1/test1"));
-      System.out.println(urlVal3.isValid("http://www.google.com/test1/"));
-      System.out.println("\nShould Not Validate: \n");
-      System.out.println(urlVal3.isValid("http://www.google.com/test1test1"));
-      System.out.println(urlVal3.isValid("http://www.google.com/test1//test1"));
+      System.out.println("\nShould Validate: ");
+      System.out.println("http://www.google.com/test1/test1");
+      System.out.println(urlVal.isValid("http://www.google.com/test1/test1"));
+      System.out.println("http://www.google.com/test1/");
+      System.out.println(urlVal.isValid("http://www.google.com/test1/"));
+      System.out.println("\nShould Not Validate: ");
+      System.out.println("http://www.google.comtest1test1");
+      System.out.println(urlVal.isValid("http://www.google.com/test1test1"));
+      System.out.println("http://www.google.com/test1//test1");
+      System.out.println(urlVal.isValid("http://www.google.com/test1//test1"));
 
       //queries
-      System.out.println("\nShould Validate: \n");
-      System.out.println(urlVal3.isValid("http://www.google.com?action=view"));
-      System.out.println("\nShould Not Validate: \n");
-      System.out.println(urlVal3.isValid("http://www.google.com?action="));
-      System.out.println(urlVal3.isValid("http://www.google.comaction=view"));
-      System.out.println(urlVal3.isValid("http://www.google.com??action=view"));
+      System.out.println("\nShould Validate:");
+      System.out.println("http://www.google.com?action=view");
+      System.out.println(urlVal.isValid("http://www.google.com?action=view"));
+      System.out.println("\nShould Not Validate: ");
+      System.out.println("http://www.google.com?action");
+      System.out.println(urlVal.isValid("http://www.google.com?action="));
+      System.out.println("http://www.google.com=view");
+      System.out.println(urlVal.isValid("http://www.google.comaction=view"));
+      System.out.println("http://www.google.com??action=view");
+      System.out.println(urlVal.isValid("http://www.google.com??action=view"));
+    
+      
+      UrlValidator urlVal3 = new UrlValidator(null, null, UrlValidator.ALLOW_LOCAL_URLS);
+     System.out.println("\nAllowing local urls: \n");
+     // Scheme
+     System.out.println("\nShould Validate:");
+     System.out.println("http://www.google.com");
+     System.out.println(urlVal.isValid("http://www.google.com"));
+     System.out.println("www.google.com");
+     System.out.println(urlVal.isValid("www.google.com"));
+     System.out.println("\nShould Not Validate:");
+     System.out.println("h3tp://www.google.com");
+   System.out.println(urlVal.isValid("h3tp://www.google.com"));
+   System.out.println("://www.google.com");
+     System.out.println(urlVal.isValid("://www.google.com"));
 
+
+     //authority
+     System.out.println("\nShould Validate:");
+     System.out.println("http://www.google.com");
+     System.out.println(urlVal.isValid("http://www.google.com"));
+     System.out.println("\nShould Not Validate:");
+     System.out.println("http://www.google~.com");
+     System.out.println(urlVal.isValid("http://www.google~.com"));
+     System.out.println("http://www.google");
+     System.out.println(urlVal.isValid("http://www.google"));
+ 
+
+     //port
+     System.out.println("\nShould Validate:");
+     System.out.println("http://www.google.com:80");
+     System.out.println(urlVal.isValid("http://www.google.com:80"));
+     System.out.println("\nShould Not Validate:");
+     System.out.println("http://www.google.com:");
+     System.out.println(urlVal.isValid("http://www.google.com:"));
+
+     //path
+      System.out.println("\nShould Validate: ");
+      System.out.println("http://www.google.com/test1");
+      System.out.println(urlVal.isValid("http://www.google.com/test1"));
+      System.out.println("http://www.google.com/");
+      System.out.println(urlVal.isValid("http://www.google.com/"));
+      System.out.println("\nShould Not Validate: ");
+      System.out.println("http://www.google.comtest1");
+      System.out.println(urlVal.isValid("http://www.google.comtest1"));
+      System.out.println("http://www.google.com//test1");
+      System.out.println(urlVal.isValid("http://www.google.com//test1"));
+
+      //option
+      System.out.println("\nShould Validate: ");
+      System.out.println("http://www.google.com/test1/test1");
+      System.out.println(urlVal.isValid("http://www.google.com/test1/test1"));
+      System.out.println("http://www.google.com/test1/");
+      System.out.println(urlVal.isValid("http://www.google.com/test1/"));
+      System.out.println("\nShould Not Validate: ");
+      System.out.println("http://www.google.comtest1test1");
+      System.out.println(urlVal.isValid("http://www.google.com/test1test1"));
+      System.out.println("http://www.google.com/test1//test1");
+      System.out.println(urlVal.isValid("http://www.google.com/test1//test1"));
+
+      //queries
+      System.out.println("\nShould Validate:");
+      System.out.println("http://www.google.com?action=view");
+      System.out.println(urlVal.isValid("http://www.google.com?action=view"));
+      System.out.println("\nShould Not Validate: ");
+      System.out.println("http://www.google.com?action");
+      System.out.println(urlVal.isValid("http://www.google.com?action="));
+      System.out.println("http://www.google.com=view");
+      System.out.println(urlVal.isValid("http://www.google.comaction=view"));
+      System.out.println("http://www.google.com??action=view");
+      System.out.println(urlVal.isValid("http://www.google.com??action=view"));
     
 
      UrlValidator urlVal4 = new UrlValidator();
      System.out.println("\nDefault: \n");
-          // Scheme
-     System.out.println("\nShould Validate: \n");
-     System.out.println(urlVal4.isValid("http://www.google.com"));
-     System.out.println(urlVal4.isValid("http://www.google.com"));
-     System.out.println(urlVal4.isValid("www.google.com"));
-     System.out.println("\nShould Not Validate: \n");
-     System.out.println(urlVal4.isValid("h3tp://www.google.com"));
-     System.out.println(urlVal4.isValid("://www.google.com"));
+     // Scheme
+     System.out.println("\nShould Validate:");
+     System.out.println("http://www.google.com");
+     System.out.println(urlVal.isValid("http://www.google.com"));
+     System.out.println("www.google.com");
+     System.out.println(urlVal.isValid("www.google.com"));
+     System.out.println("\nShould Not Validate:");
+     System.out.println("h3tp://www.google.com");
+   System.out.println(urlVal.isValid("h3tp://www.google.com"));
+   System.out.println("://www.google.com");
+     System.out.println(urlVal.isValid("://www.google.com"));
 
 
      //authority
-     System.out.println("\nShould Validate: \n");
-     System.out.println(urlVal4.isValid("http://www.google.com"));
-     System.out.println("\nShould Not Validate: \n");
-     System.out.println(urlVal4.isValid("http://www.google~.com"));
-     System.out.println(urlVal4.isValid("http://www.google"));
+     System.out.println("\nShould Validate:");
+     System.out.println("http://www.google.com");
+     System.out.println(urlVal.isValid("http://www.google.com"));
+     System.out.println("\nShould Not Validate:");
+     System.out.println("http://www.google~.com");
+     System.out.println(urlVal.isValid("http://www.google~.com"));
+     System.out.println("http://www.google");
+     System.out.println(urlVal.isValid("http://www.google"));
  
 
      //port
-     System.out.println("\nShould Validate: \n");
-     System.out.println(urlVal4.isValid("http://www.google.com:80"));
-     System.out.println("\nShould Not Validate: \n");
-     System.out.println(urlVal4.isValid("http://www.google.com:"));
+     System.out.println("\nShould Validate:");
+     System.out.println("http://www.google.com:80");
+     System.out.println(urlVal.isValid("http://www.google.com:80"));
+     System.out.println("\nShould Not Validate:");
+     System.out.println("http://www.google.com:");
+     System.out.println(urlVal.isValid("http://www.google.com:"));
 
      //path
-      System.out.println("\nShould Validate: \n");
-      System.out.println(urlVal4.isValid("http://www.google.com/test1"));
-      System.out.println(urlVal4.isValid("http://www.google.com/"));
-      System.out.println("\nShould Not Validate: \n");
-      System.out.println(urlVal4.isValid("http://www.google.comtest1"));
-      System.out.println(urlVal4.isValid("http://www.google.com//test1"));
+      System.out.println("\nShould Validate: ");
+      System.out.println("http://www.google.com/test1");
+      System.out.println(urlVal.isValid("http://www.google.com/test1"));
+      System.out.println("http://www.google.com/");
+      System.out.println(urlVal.isValid("http://www.google.com/"));
+      System.out.println("\nShould Not Validate: ");
+      System.out.println("http://www.google.comtest1");
+      System.out.println(urlVal.isValid("http://www.google.comtest1"));
+      System.out.println("http://www.google.com//test1");
+      System.out.println(urlVal.isValid("http://www.google.com//test1"));
 
       //option
-      System.out.println("\nShould Validate: \n");
-      System.out.println(urlVal4.isValid("http://www.google.com/test1/test1"));
-      System.out.println(urlVal4.isValid("http://www.google.com/test1/"));
-      System.out.println("\nShould Not Validate: \n");
-      System.out.println(urlVal4.isValid("http://www.google.com/test1test1"));
-      System.out.println(urlVal4.isValid("http://www.google.com/test1//test1"));
+      System.out.println("\nShould Validate: ");
+      System.out.println("http://www.google.com/test1/test1");
+      System.out.println(urlVal.isValid("http://www.google.com/test1/test1"));
+      System.out.println("http://www.google.com/test1/");
+      System.out.println(urlVal.isValid("http://www.google.com/test1/"));
+      System.out.println("\nShould Not Validate: ");
+      System.out.println("http://www.google.comtest1test1");
+      System.out.println(urlVal.isValid("http://www.google.com/test1test1"));
+      System.out.println("http://www.google.com/test1//test1");
+      System.out.println(urlVal.isValid("http://www.google.com/test1//test1"));
 
       //queries
-      System.out.println("\nShould Validate: \n");
-      System.out.println(urlVal4.isValid("http://www.google.com?action=view"));
-      System.out.println("\nShould Not Validate: \n");
-      System.out.println(urlVal4.isValid("http://www.google.com?action="));
-      System.out.println(urlVal4.isValid("http://www.google.comaction=view"));
-      System.out.println(urlVal4.isValid("http://www.google.com??action=view"));
-
+      System.out.println("\nShould Validate:");
+      System.out.println("http://www.google.com?action=view");
+      System.out.println(urlVal.isValid("http://www.google.com?action=view"));
+      System.out.println("\nShould Not Validate: ");
+      System.out.println("http://www.google.com?action");
+      System.out.println(urlVal.isValid("http://www.google.com?action="));
+      System.out.println("http://www.google.com=view");
+      System.out.println(urlVal.isValid("http://www.google.comaction=view"));
+      System.out.println("http://www.google.com??action=view");
+      System.out.println(urlVal.isValid("http://www.google.com??action=view"));
    }
    
    
    // scheme partition
    public void testYourFirstPartition()
    {
-	   System.out.println("\nTesting Schemes:\n");
+     System.out.println("\nTesting Schemes:\n");
 
      String[] ourSchemes = {"http://", "h3tp://", "://"};
      UrlValidator schemeVal = new UrlValidator(ourSchemes, 0);
@@ -266,7 +344,7 @@ public class UrlValidatorTest extends TestCase {
    
    // authority partition
    public void testYourSecondPartition(){
-	   System.out.println("\nTesting Authority:\n");
+     System.out.println("\nTesting Authority:\n");
 
      String[] ourAuthority = {"www.google.com", "www.google~.com", "www.google"};
      UrlValidator authVal = new UrlValidator(ourAuthority, 0);
@@ -347,8 +425,8 @@ public void testIsValid()
 
 
   // randomize valid each round and loop through "length" times
-	for(int i = 0; i < length; i++)
-	{
+  for(int i = 0; i < length; i++)
+  {
 
       // randomize
       System.out.println("\nTesting Known Valid Part Inputs:\n");
@@ -386,7 +464,7 @@ public void testIsValid()
    
    public void testAnyOtherUnitTest()
    {
-	   
+     
    }
    /**
     * Create set of tests by taking the testUrlXXX arrays and
