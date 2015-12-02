@@ -571,7 +571,7 @@ public class UrlValidatorTest extends TestCase {
     } 
   }
 
-  public void testAnyOtherUnitTest()
+  public void testisValidQueryUnitTest()
   {
 	  UrlValidator val = new UrlValidator();
 	  System.out.println("\nUnit Test of isValidQuery\n");
@@ -581,7 +581,11 @@ public class UrlValidatorTest extends TestCase {
 	  System.out.println("Result: " + val.isValidQuery(""));
 	  System.out.println("\nTesting query ?page=1&test=0");
 	  System.out.println("Result: " + val.isValidQuery("?page=1&test=0"));
-	  
+  }
+  
+  public void testisValidSchemeUnitTest()
+  {
+	  UrlValidator val = new UrlValidator();
 	  System.out.println("\nUnit Test of isValidScheme\n");
 	  System.out.println("\nTesting scheme http");
 	  System.out.println("Result: " + val.isValidScheme("http"));
