@@ -43,61 +43,61 @@ http:/www.google.com                                   	Expect: False           
  
 Next, we tested various URL authorities with the valid scheme “http://”.
  
-http://www.google.com                                  	Known true                		Actual: True
-http://www.google~.com                                  Expected: False              	Actual: False
-htttp://www.google                                      Expected: False              	Actual: False
+http://www.google.com                                  	Expected: True                		Actual: True
+http://www.google~.com                                  Expected: False              		Actual: False
+htttp://www.google                                      Expected: False              		Actual: False
 http://www.google.au                                    Expected: True            		Actual: True
-http://broke.hostname.com                            	  Expected: False              	Actual: False
-http://hostname			                                  	Expected: False(default)		Actual: True
-http://1.2.3				                                    Expected: False			Actual: False
+http://broke.hostname.com                            	Expected: False              		Actual: False
+http://hostname			                        Expected: False(default)		Actual: True
+http://1.2.3				                Expected: False				Actual: False
 http://                                               	Expected: False                    	Actual: False
  
  
 From these, we took valid passing tests from before and tested various ports for validity:
  
 http://www.google.com:80                             	Expected: True          		Actual: True
-http://www.google.com:300		                          Expected: True		        	Actual: True
-http://www.google.com:3000		                        Expected: True	        		Actual: False
-http://www.google.com:30000		                        Expected: True			        Actual: False
-http://www.google.com:                              	Expected: False           	Actual: False
-http://www.google.com:-80                           	Expected: False            	Actual: False
-http:///www.google.com:80a                          	Expected: False            	Actual: False
+http://www.google.com:300		                Expected: True		        	Actual: True
+http://www.google.com:3000		                Expected: True	        		Actual: False
+http://www.google.com:30000		                Expected: True			        Actual: False
+http://www.google.com:                              	Expected: False           		Actual: False
+http://www.google.com:-80                           	Expected: False            		Actual: False
+http:///www.google.com:80a                          	Expected: False            		Actual: False
  
  
 Valid answers from the previous tests were then taken and tested with various test paths:
  
 http://www. google.com/test1                        	Expected: True          		Actual: True
-http://www. google.com/                               Expected: True          		Actual: True
-http://www.google.comtest1                          	Expected: False             Actual: False
-http://www.google.com//test1                        	Expected: False           	Actual: False
-http://www.google.com/..                              Expected: False            	Actual: False
-http://www.google.com/../                             Expected: False            	Actual: False
+http://www. google.com/                         	Expected: True          		Actual: True
+http://www.google.comtest1                          	Expected: False         		Actual: False
+http://www.google.com//test1                        	Expected: False           		Actual: False
+http://www.google.com/..                              	Expected: False            		Actual: False
+http://www.google.com/../                             	Expected: False            		Actual: False
  
  
 We then added path options for testing to the valid answers from the previous set of tests:
  
 http://www. google.com/test1                        	Expected: True          		Actual: True
-http://www. google.com/                               Expected: True          		Actual: True
-http://www.google.comtest1                          	Expected: False             Actual: False
-http://www.google.com//test1                        	Expected: False            	Actual: False
-http://www.google.com/..                            	Expected: False            	Actual: False
-http://www.google.com/../                            	Expected: False            	Actual: False
+http://www. google.com/                               	Expected: True          		Actual: True
+http://www.google.comtest1                          	Expected: False             		Actual: False
+http://www.google.com//test1                        	Expected: False            		Actual: False
+http://www.google.com/..                            	Expected: False            		Actual: False
+http://www.google.com/../                            	Expected: False            		Actual: False
  
  
 Path options were then appended for testing:
-http:/www.google.com/test1/test1                      Expected: True          	Actual: True
-http://www.google.com/test1/                         	Expected: True          	Actual: True
-http://www.google.com/test1test1                    	Expected: True          	Actual: True
-http://www.google.com/test1//test1                  	Expected: False           Actual: False
-http://www.google.comtest1test1                     	Expected: False           Actual: False
+http:/www.google.com/test1/test1                      	Expected: True          		Actual: True
+http://www.google.com/test1/                         	Expected: True          		Actual: True
+http://www.google.com/test1test1                    	Expected: True          		Actual: True
+http://www.google.com/test1//test1                  	Expected: False           		Actual: False
+http://www.google.comtest1test1                     	Expected: False           		Actual: False
  
 
 Valid answers from the previous tests were taken and tested with queries appended:
-http://www.google.com?action=view”                    Expected: True	         Actual: False
-http://www.gogle.com?action=view&hi=hello             Expected: True 	         Actual: False
-http://www.google.com?action=                         Expected: False        	 Actual: False
-http://www.google.comaction=view                      Expected: False          Actual: False
-http://www.google.com??action=view                    Expected:  False       	 Actual: False
+http://www.google.com?action=view”                    Expected: True	         		Actual: False
+http://www.gogle.com?action=view&hi=hello             Expected: True 	         		Actual: False
+http://www.google.com?action=                         Expected: False        	 		Actual: False
+http://www.google.comaction=view                      Expected: False          			Actual: False
+http://www.google.com??action=view                    Expected:  False       	 		Actual: False
  
 
 
@@ -127,35 +127,35 @@ It was decided that we would partition the input domain into URL parts, each of 
 
 Scheme:
         	Valid Scheme: http://                		Expected: Pass
-        	Valid Scheme: h3tp://            		    Expected: Pass
-        	Fragment: ://                           Expected: Fail
-        	Fragment: :/                            Expected: Fail
-        	None: “ “                          		  Expected: Pass
+        	Valid Scheme: h3tp://            		Expected: Pass
+        	Fragment: ://                           	Expected: Fail
+        	Fragment: :/                            	Expected: Fail
+        	None: “ “                          		Expected: Pass
  
 Authority:
         	Valid:	www.google.com      	           	Expected: Pass
         	Invalid: broke.hostname.com             	Expected: Fail
         	Fragment: www.google          	        	Expected: Fail
-        	Illegal Characters: www.google~.com 	    Expected: Fail
+        	Illegal Characters: www.google~.com 	    	Expected: Fail
         	None: “ “                             		Expected: Fail
  
 Port:
-        	Valid: :80                                Expected: Pass
+        	Valid: :80                                	Expected: Pass
         	Invalid: :-80                           	Expected: Fail
         	Invalid: :80a                          		Expected: Fail
         	Fragment: :                           		Expected: Fail
 Path:
         	Valid:	/test1                        		Expected: Pass
         	Fragment: /                           		Expected: Pass
-        	Fragment: test1                     		  Expected: Fail
-        	Additional: //test1                  		  Expected: Fail
-        	Non-Alpha: .. 	                    		  Expected: Fail
+        	Fragment: test1                     		Expected: Fail
+        	Additional: //test1                  	  	Expected: Fail
+        	Non-Alpha: .. 	                    	  	Expected: Fail
  
 Queries:
-        	Valid: ?action=view                      Expected: Pass           
-        	Fragment: ?action=                       Expected  Fail               	
-        	Fragment: /   	                         Expected: Fail               	
-        	Additional: ??action=view                Expected: Fail             
+        	Valid: ?action=view                      	Expected: Pass           
+        	Fragment: ?action=                       	Expected  Fail               	
+        	Fragment: /   	                         	Expected: Fail               	
+        	Additional: ??action=view                	Expected: Fail             
 
 
  	
