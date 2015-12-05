@@ -329,6 +329,8 @@ Description: In isValidScheme line 336 states that if scheme is null, then it is
 bug can be reproduce by submitting the string "www.google.com" to the isValid function in the UrlValidator class with any flags set
 .This bug was discovered while doing manual testing in the testManualTest function, and occured in all flag variations.
 
+Code Causing Bug:
+isValidScheme() line 336.
 
 
 Title: Acceptable queries fail validation in UrlValidator
@@ -355,6 +357,8 @@ queries invalid. This can be reproduced by submitting "http://www.google.com?act
 This works with any flags set in the creation of the UrlValidator object. This bug was discovered while doing manual testing in the
 testManualTest function.
  
+Code Causing Bug:
+isValidQuery line 314.
 
 
 Title: Whitspace in passing URLs in UrlValidator
@@ -381,7 +385,8 @@ allows non-valid URLs to pass, when they should instead fail. This can be reprod
 argument to the function isValid. This works with any flags set in the creation of the UrlValidator object. This bug was discovered
 while doing manual testing in the testManualTest function.
 
-
+Code Causing Bug:
+isValidAuthority line 337.
 
 
 FULL URLS TESTED:
