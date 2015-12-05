@@ -325,7 +325,9 @@ Affected Version: 1.4
 File name: UrlValidator.java
 Environment: Windows 7 x64, Eclipse Mars, Java 1.7
  
-Description: In isValidScheme line 336 states that if scheme is null, then it is a false scheme. However, null schemes are valid. This bug can be reproduce by submitting the string "www.google.com" to the isValid function in the UrlValidator class with any flags set.This bug was discovered while doing manual testing in the testManualTest function, and occured in all flag variations.
+Description: In isValidScheme line 336 states that if scheme is null, then it is a false scheme. However, null schemes are valid. This
+bug can be reproduce by submitting the string "www.google.com" to the isValid function in the UrlValidator class with any flags set
+.This bug was discovered while doing manual testing in the testManualTest function, and occured in all flag variations.
 
 
 
@@ -348,7 +350,10 @@ Affected Version: 1.4
 File name: UrlValidator.java
 Environment: Windows 7 x64, Eclipse Mars, Java 1.7
  
-Description: In isValidQuery line 314 the variable representing the query string is missing the '?' mark, therfore making all non-null queries invalid. This can be reproduced by submitting "http://www.google.com?action=view" as the argument for the function isValid. This works with any flags set in the creation of the UrlValidator object. This bug was discovered while doing manual testing in the testManualTest function.
+Description: In isValidQuery line 314 the variable representing the query string is missing the '?' mark, therfore making all non-null
+queries invalid. This can be reproduced by submitting "http://www.google.com?action=view" as the argument for the function isValid.
+This works with any flags set in the creation of the UrlValidator object. This bug was discovered while doing manual testing in the
+testManualTest function.
  
 
 
@@ -371,7 +376,10 @@ Affected Version: 1.4
 File name: UrlValidator.java
 Environment: Windows 7 x64, Eclipse Mars, Java 1.7
  
-Description: In isValidAuthority line 377 removes all trailing whitespace following authority as a means of separating port. This allows non-valid URLs to pass, when they should instead fail. This can be reproduced by submitting "http:www.google.com   /" as the argument to the function isValid. This works with any flags set in the creation of the UrlValidator object. This bug was discovered while doing manual testing in the testManualTest function.
+Description: In isValidAuthority line 377 removes all trailing whitespace following authority as a means of separating port. This
+allows non-valid URLs to pass, when they should instead fail. This can be reproduced by submitting "http:www.google.com   /" as the
+argument to the function isValid. This works with any flags set in the creation of the UrlValidator object. This bug was discovered
+while doing manual testing in the testManualTest function.
 
 
 
