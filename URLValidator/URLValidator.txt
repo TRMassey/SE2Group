@@ -141,6 +141,7 @@ Authority:
  
 Port:
         	Valid: :80                                	Expected: Pass
+        	Valid: :3000				                         Expected: Pass
         	Invalid: :-80                           	Expected: Fail
         	Invalid: :80a                          		Expected: Fail
         	Fragment: :                           		Expected: Fail
@@ -195,7 +196,7 @@ public void testManualTest() - Manual testing of full addresses, both valid and 
 public void testYourFirstPartition() - Tested isValidScheme(), scheme partition
 public void testYourSecondPartition() - Tested isValidAuthority(), authority partition
 public void testYourThirdPartition() - Tested isValidAuthority() with added port, port partition
-public void testYourFourthPartition() - Tested isValidPath, parh partition
+public void testYourFourthPartition() - Tested isValidPath, path partition
 public void testYourFifthPartition() - Tested isValidQuery, query partition
 public void testIsValid() - Programming Based Testing, loop of known valid url parts in a valid combination, tested until all 
 combinations are achieved. Failed addresses stored and printed.
