@@ -396,7 +396,8 @@ In order to localize the fault we began with the organization of our scheme. Our
 further localizing the area the fault would could be located in. At the narrowest point of localization, we could determine which 
 portion of the URL was passing a validity check incorrectly.
 
-Based on this information, we began our bug search in the indicated portion of code that handled the validity check for the partition. From there, we set up break points and watches with the Eclipse debugger to further isolate the line number.
+Based on this information, we began our bug search in the indicated portion of code that handled the validity check for the partition.
+From there, we set up break points and watches with the Eclipse debugger to further isolate the line number.
 Individual bug detail information is as follows:
 
 Validator flags ports with 4 or 5 as invalid: After determining that there was a bug in the length of ports being recognized, we 
