@@ -416,7 +416,8 @@ uses watches.
 
 Whitespace in passing URLs in UrlValidator: Initial test organization and secondary testing of the authority partition indicated the 
 isValidAuthority() function was likely to contain the error. Break points were sent and we stepped through, line by line, with the 
-debugger. It was noted that at line 377, all trailing whitespace following the authority is removed as a means of separating the port. This is the likely cause of allowing non-valid URLs to pass validation.
+debugger. It was noted that at line 377, all trailing whitespace following the authority is removed as a means of separating the port.
+This is the likely cause of allowing non-valid URLs to pass validation.
 
 
 
