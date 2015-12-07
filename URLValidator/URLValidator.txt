@@ -141,7 +141,7 @@ Authority:
  
 Port:
         	Valid: :80                                	Expected: Pass
-        	Valid: :3000				                     Expected: Pass
+        	Invalid: :3000                           	Expected: Fail
         	Invalid: :-80                           	Expected: Fail
         	Invalid: :80a                          		Expected: Fail
         	Fragment: :                           		Expected: Fail
